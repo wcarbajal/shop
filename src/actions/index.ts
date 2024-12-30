@@ -4,6 +4,10 @@ export * from './address/get-user-address';
 export * from './address/set-user-address';
 
 
+export * from './brands/get-paginated-brands'
+export * from './brands/create-update-brand'
+
+
 
 
 export * from './auth/login';

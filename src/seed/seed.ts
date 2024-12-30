@@ -13,6 +13,10 @@ interface SeedProduct {
   type: ValidTypes;
   gender: 'men' | 'women' | 'kid' | 'unisex';
 }
+interface SeedBrand{
+  name: string;
+  state: 'activo' | 'inactivo';
+}
 
 interface SeedUser {
   email: string;
@@ -30,13 +34,45 @@ interface SeedData {
   users: SeedUser[];
   categories: string[];
   products: SeedProduct[];
+  brands: SeedBrand[];
 }
 
 
 
 
 export const initialData: SeedData = {
+brands: [
+  {
+    name: 'Coca Cola', 
+    state: 'activo'
+  },
+  {
+    name: 'Nestle',
+    state: 'activo'
+  },
+  {
+    name: 'Puma',
+    state: 'activo'
+  },
+  {
+    name: 'Reebok',
+    state: 'activo'
+  },
+  {
+    name: 'Converse',
+    state: 'activo'
+  },
+  {
+    name: 'Skechers',
+    state: 'inactivo'
+  },
+  {
+    name: 'Vans',
+    state: 'activo'
+  }
 
+  
+],
   users: [
     {
       email: 'favio@google.com',

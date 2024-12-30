@@ -25,6 +25,9 @@ interface FormInputs {
   tags: string;
   gender: "men" | "women" | "kid" | "unisex";
   categoryId: string;
+  measure: string; //todo: measure field
+  
+
 
   images?: FileList;
 }
