@@ -29,6 +29,7 @@ export const getPaginatedProductsWithImages = async ({
             url: true,
           },
         },
+        brand: true
       },
       //! Por género
       where: {

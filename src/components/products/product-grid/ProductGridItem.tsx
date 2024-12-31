@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { Product } from '@/interfaces';
 import { useState } from 'react';
+import { currencyFormat } from '@/utils';
 
 interface Props {
   product: Product;
@@ -18,12 +19,13 @@ export const ProductGridItem = ( { product }: Props ) => {
 
 
   return (
-    <div className="rounded-md overflow-hidden fade-in ">
-      <Link href={ `/product/${ product.slug }` }>
+    <div className="rounded-md overflow-hidden fade-in border h-[500px] ">
+      
+      <Link  className="" href={ `/product/${ product.slug }` }>
         <Image
           src={ `/products/${ displayImage }` }
           alt={ product.title }
-          className="w-full h-2/3 object-cover rounded"
+          className="w-full h-2/5 object-cover rounded "
           width={  500 }
           height={ 500 }
           onMouseEnter={ () => setDisplayImage( product.images[1] )  }
@@ -37,8 +39,8 @@ export const ProductGridItem = ( { product }: Props ) => {
           href={ `/product/${ product.slug }` }>
           { product.title }
         </Link>
-        <span>{product.description}</span>
-        <span className="font-bold">${ product.price }</span>
+        <span className="line-clamp-6 ">{product.description}</span>
+        <span className="font-bold">{ currencyFormat( product.price) }</span>
       </div>
 
     </div>

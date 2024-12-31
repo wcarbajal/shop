@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useCartStore } from '@/store';
 import { ProductImage, QuantitySelector } from '@/components';
 import Link from 'next/link';
+import { currencyFormat } from '../../../../utils/currencyFormat';
 
 
 
@@ -52,7 +53,7 @@ export const ProductsInCart = () => {
               { product.size } - {product.title}
             </Link>
             
-            <p>${product.price}</p>
+            <p>{currencyFormat(product.price)}</p>
             <QuantitySelector 
               quantity={ product.quantity } 
               onQuantityChanged={ quantity => updateProductQuantity(product, quantity) }

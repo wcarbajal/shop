@@ -13,6 +13,7 @@ import {
 } from "@/components";
 import { getProductBySlug } from "@/actions";
 import { AddToCart } from './ui/AddToCart';
+import { currencyFormat } from '../../../../utils/currencyFormat';
 
 interface Props {
   params: {
@@ -81,7 +82,7 @@ export default async function ProductBySlugPage({ params }: Props) {
           {product.title}
         </h1>
 
-        <p className="text-lg mb-5">${product.price}</p>
+        <p className="text-lg mb-5">{currencyFormat(product.price)}</p>
 
         <AddToCart product={ product } />
 

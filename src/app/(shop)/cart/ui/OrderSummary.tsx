@@ -26,7 +26,7 @@ export const OrderSummary = () => {
     }
 
 
-  },[ itemsInCart, loaded ])
+  },[ itemsInCart, loaded, router ])
 
 
 
@@ -40,9 +40,9 @@ export const OrderSummary = () => {
       </span>
 
       <span>Subtotal</span>
-      <span className="text-right">{currencyFormat(subTotal)}</span>
+      <span className="text-right">{currencyFormat(subTotal*0.82)}</span>
 
-      <span>Impuestos (15%)</span>
+      <span>Impuestos (18%)</span>
       <span className="text-right">{currencyFormat(tax)}</span>
 
       <span className="mt-5 text-2xl">Total:</span>

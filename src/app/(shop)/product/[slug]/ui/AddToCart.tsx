@@ -38,6 +38,7 @@ export const AddToCart = ({ product }: Props) => {
     setQuantity(1);
     setSize(undefined);
 
+    alert('Producto agregado al carrito');
 
   };
 

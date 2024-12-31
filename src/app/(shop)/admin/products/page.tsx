@@ -52,26 +52,34 @@ export default async function OrdersPage({ searchParams }: Props) {
                 scope="col"
                 className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
               >
-                Precio
+                Marca
               </th>
               <th
                 scope="col"
                 className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
               >
-                Género
+                Contenido
               </th>
+              <th
+                scope="col"
+                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+              >
+                Unidad de medida
+              </th>
+              <th
+                scope="col"
+                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+              >
+                Precio
+              </th>
+             
               <th
                 scope="col"
                 className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
               >
                 Inventario
               </th>
-              <th
-                scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-              >
-                Tallas
-              </th>
+              
             </tr>
           </thead>
           <tbody>
@@ -100,20 +108,21 @@ export default async function OrdersPage({ searchParams }: Props) {
                   </Link>
                 </td>
                 <td className="text-sm font-bold  text-gray-900 px-6 py-4 whitespace-nowrap">
+                  {product.brand?.name}
+                </td>
+                <td className="text-sm font-bold  text-gray-900 px-6 py-4 whitespace-nowrap">
+                  {product.descriptionMeasure}
+                </td>
+                <td className="text-sm font-bold  text-gray-900 px-6 py-4 whitespace-nowrap">
+                  {product.measure}
+                </td>
+                <td className="text-sm font-bold  text-gray-900 px-6 py-4 whitespace-nowrap">
                   {currencyFormat(product.price)}
-                </td>
-
-                <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  {product.gender}
-                </td>
+                </td>                
 
                 <td className="text-sm text-gray-900 font-bold px-6 py-4 whitespace-nowrap">
                   {product.inStock}
-                </td>
-
-                <td className="text-sm text-gray-900 font-bold px-6 py-4 whitespace-nowrap">
-                  {product.sizes.join(", ")}
-                </td>
+                </td>              
               </tr>
             ))}
           </tbody>

@@ -20,13 +20,9 @@ export default async function BrandsPage() {
     <>
       <Title title="Todas las marcas" />
 
-      <div className="flex justify-center mb-5">
-        <Link href="/admin/brand/new" className="flex items-center p-5 h-10 rounded-md bg-gray-200 hover:bg-gray-400">
-          <IoAddCircleOutline size={ 24 } className="mr-2" />
-          <span>
-            Crear marca
-          </span>
-
+      <div className="flex justify-end mb-5">
+        <Link href="/admin/brand/new" className="btn-primary">
+          Nueva marca
         </Link>
       </div>
 
