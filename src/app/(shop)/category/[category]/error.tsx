@@ -1,7 +1,7 @@
 'use client';
 
 
-import {  PageProductNotFound } from '@/components';
+import { PageNotFound, PageProductNotFound } from '@/components';
 
 
 export default function GenderErrorPage() {

@@ -126,8 +126,6 @@ export const createUpdateProduct = async ( formData: FormData ) => {
         } );
 
       }
-
-
       // Proceso de carga y guardado de imagenes
       // Recorrer las imagenes y guardarlas
       if ( formData.getAll( 'images' ) ) {
@@ -145,11 +143,8 @@ export const createUpdateProduct = async ( formData: FormData ) => {
         } );
 
       }
-
-
-
-
-      return {
+      
+     return {
         product
       };
     } );

@@ -1,3 +1,6 @@
+import { Brands } from '@prisma/client';
+
+
 export interface Product {
   id: string;
   description: string;
@@ -8,8 +11,12 @@ export interface Product {
   slug: string;
   tags: string[];
   title: string;
+  categoryId: string;
   //todo: type: Type;
-  gender: Category;
+  gender: 'men'|'women'|'kid'|'unisex';
+  brand?: Brands | undefined | null;
+  measure: Measure | null;
+  descriptionMeasure: string | null;
 }
 
 export interface CartProduct {
@@ -30,6 +37,22 @@ export interface ProductImage {
 }
 
 
-type Category = 'men'|'women'|'kid'|'unisex';
+export type Measure = 'nodefinido' |
+'barra' |
+'bolsa' |
+'botella' |
+'caja' |
+'frasco' |
+'galonera' |
+'gramo' |
+'kilogramo' |
+'lata' |
+'litro' |
+'mililitro' |
+'pack' |
+'paquete' |
+'tetrapack' |
+'unidad' |
+'vaso';
 export type Size = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL';
 export type Type = 'shirts'|'pants'|'hoodies'|'hats';

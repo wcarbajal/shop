@@ -25,7 +25,7 @@ interface FormInputs {
   price: number;
   inStock: number;
   brandId: string; //todo: brand field
-  descriptionMeasure: string; //todo: descriptionMeasure field
+  descriptionMeasure: string ; //todo: descriptionMeasure field
   measure: Measure; //todo: measure field
 
   sizes: string[];
@@ -52,11 +52,18 @@ export const ProductForm = ( { product, categories, brands }: Props ) => {
     watch,
   } = useForm<FormInputs>( {
     defaultValues: {
-      ...product,
-      tags: product.tags?.join( ", " ),
+      title: product.title ?? '',
+      slug: product.slug ?? '',
+      description: product.description ?? '',
+      price: product.price ?? 0,
+      inStock: product.inStock ?? 0,
+      brandId: product.brand?.id ?? '',
+      descriptionMeasure: product.descriptionMeasure ?? '',
+      measure: product.measure ?? 'nodefinido',
       sizes: product.sizes ?? [],
-
-
+      tags: product.tags?.join(", ") ?? '',
+      gender: product.gender ?? 'unisex',
+      categoryId: product.categoryId ?? '',
       images: undefined,
     },
   } );
@@ -244,6 +251,7 @@ export const ProductForm = ( { product, categories, brands }: Props ) => {
           <span>Price</span>
           <input
             type="number"
+            min="0" step="0.10"
             className="p-2 border rounded-md bg-gray-200"
             { ...register( "price", { required: true, min: 0 } ) }
           />
