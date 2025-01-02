@@ -23,11 +23,12 @@ export const ProductGridItem = ( { product }: Props ) => {
       
       <Link  className="" href={ `/product/${ product.slug }` }>
         <Image
-          src={ `/products/${ displayImage }` } //TODO: update to fetch images from API
+          src={ displayImage  } //TODO: update to fetch images from API
           alt={ product.title }
           className="w-full h-2/5 object-cover rounded "
           width={  500 }
           height={ 500 }
+          priority
           onMouseEnter={ () => setDisplayImage( product.images[1] )  }
           onMouseLeave={ () => setDisplayImage( product.images[0] ) }
         />

@@ -8,6 +8,7 @@ import { titleFont } from "@/config/fonts";
 import { useCartStore, useUIStore } from "@/store";
 import { Category } from '@prisma/client';
 import { redirect } from 'next/navigation';
+import { useCategoryStore } from '@/store/category/cart-category';
 
 
 interface Props {
@@ -18,6 +19,9 @@ export const TopMenu = ( { categorias }: Props ) => {
 
   const openSideMenu = useUIStore( ( state ) => state.openSideMenu );
   const totalItemsInCart = useCartStore( ( state ) => state.getTotalItems() );
+
+  const categoryStore = useCategoryStore( ( state ) => state.categoryName );
+  const setCategoryStore = useCategoryStore( ( state ) => state.setCategory );
 
   const [ loaded, setLoaded ] = useState( false );
 
@@ -33,7 +37,7 @@ export const TopMenu = ( { categorias }: Props ) => {
       <div>
         <Link href="/">
           <span className={ `${ titleFont.className } antialiased font-bold` }>
-            Teslo
+            My
           </span>
           <span> | Shop</span>
         </Link>
@@ -42,16 +46,19 @@ export const TopMenu = ( { categorias }: Props ) => {
       {/* Center Menu */ }
       <div>
         Categorias
-        <select className="mx-5 bg-slate-200 rounded-md h-8" onChange={ ( e ) => {
-          console.log( e.target.value );
-          console.log( `/category/${ e.target.value }` );
-          window.location.replace( `/category/${ e.target.value }` );
+        <select className="mx-5 bg-slate-200 rounded-md h-8"
+          value={ categoryStore }
+          onChange={ ( e ) => {
+            
+            setCategoryStore( e.target.value );
+            window.location.replace( `/category/${ e.target.value }` );
 
-        } }>
-          <option value="">Todos</option>
+          } }>
+          
           { categorias.map( ( cat ) => (
-            <option key={ cat.id } value={ cat.name.toLowerCase() }>{ cat.name }</option>
+            <option key={ cat.id } value={ cat.name }>{ cat.name }</option>
           ) ) }
+
         </select>
       </div>
       {/*  <div className="hidden sm:block">

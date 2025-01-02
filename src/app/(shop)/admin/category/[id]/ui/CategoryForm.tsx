@@ -4,26 +4,26 @@ import { useForm } from "react-hook-form";
 import { Category, Product, ProductImage as ProductWithImage } from "@/interfaces";
 import Image from "next/image";
 import clsx from "clsx";
-import { createUpdateBrand, createUpdateProduct, deleteProductImage } from "@/actions";
+import { createUpdateBrand, createUpdateCategory, createUpdateProduct, deleteProductImage } from "@/actions";
 import { redirect, useRouter } from 'next/navigation';
 import { ProductImage } from '@/components';
 import { Brands, State } from '@prisma/client';
 import Link from 'next/link';
 
 interface Props {
-  idBrand: string;
-  nameBrand: string;
-  stateBrand: State | undefined;
+  idCategory: string;
+  nameCategory: string;
+  
 };
 
 
 interface FormInputs {
   id: string;
   name: string;
-  state: State;
+  
 }
 
-export const BrandForm = ( { idBrand, nameBrand, stateBrand }: Props ) => {
+export const CategoryForm = ( { idCategory, nameCategory }: Props ) => {
 
   const router = useRouter();
 
@@ -34,39 +34,31 @@ export const BrandForm = ( { idBrand, nameBrand, stateBrand }: Props ) => {
 
   } = useForm<FormInputs>( {
     defaultValues: {
-      id: idBrand ?? "",
-      name: nameBrand ?? "",
-      state: stateBrand,
+      id: idCategory ?? "",
+      name: nameCategory ?? "",      
 
     },
   } );
 
 
-
-  /*  const onSizeChanged = ( size: string ) => {
-     const sizes = new Set( getValues( "sizes" ) );
-     sizes.has( size ) ? sizes.delete( size ) : sizes.add( size );
-     setValue( "sizes", Array.from( sizes ) );
-   };
-  */
   const onSubmit = async ( data: FormInputs ) => {
     //const formData = new FormData();
 
     console.log( 'data', data );
     let identificador = data.id === '' ? 'new' : data.id;
    
-    const brand = await createUpdateBrand( identificador, data.name, data.state! );
+    const category = await createUpdateCategory( identificador, data.name );
 
     
-    if ( !brand.ok ) {
-      alert( 'Producto no se pudo actualizar' );
+    if ( !category.ok ) {
+      alert( 'Categoria no se pudo actualizar' );
       return;
     }
-    if ( brand.ok ) {
-      alert( 'Marca agregada con éxito' );
+    if ( category.ok ) {
+      alert( 'Categoria agregada con éxito' );
     }
 
-    window.location.replace( `/admin/brands` );
+    window.location.replace( `/admin/categories` );
 
 
   };
@@ -80,7 +72,7 @@ export const BrandForm = ( { idBrand, nameBrand, stateBrand }: Props ) => {
       <div className="w-full">
 
         <div className="flex flex-col mb-2">
-          <span>Nombre: </span>
+          <span>Nombre de categoria: </span>
           <input
             type="text"
             className="p-2 border rounded-md bg-gray-200"
@@ -105,21 +97,6 @@ export const BrandForm = ( { idBrand, nameBrand, stateBrand }: Props ) => {
             <span className="text-red-500">{ errors.name.message }</span>
           )
         }
-
-        <div className="flex flex-col mb-2">
-          <span>Estado: </span>
-          <select
-            className="p-2 border rounded-md bg-gray-200"
-            { ...register( "state", { required: true } ) }
-          >
-            <option value="activo">Activo</option>
-            <option value="inactivo">Inactivo</option>
-          </select>
-
-
-        </div>
-
-
 
       </div>
 

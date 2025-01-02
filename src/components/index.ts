@@ -1,5 +1,5 @@
 
-
+export * from './brand/BrandDeleteButton'
 
 
 export * from './products/product-grid/ProductGrid';

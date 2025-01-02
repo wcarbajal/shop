@@ -10,20 +10,20 @@ import { Pagination, ProductGrid, Title } from '@/components';
 
 interface Props {
   searchParams: {
-    page?: string; 
-  }
+    page?: string;
+  };
 }
 
 
-export default async function Home({ searchParams }: Props) {
+export default async function Home( { searchParams }: Props ) {
 
   const page = searchParams.page ? parseInt( searchParams.page ) : 1;
 
-  const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({ page });
+  const { products, currentPage, totalPages } = await getPaginatedProductsWithImages( { page } );
 
 
   if ( products.length === 0 ) {
-    redirect('/');
+    redirect( '/' );
   }
 
 
@@ -35,13 +35,19 @@ export default async function Home({ searchParams }: Props) {
         className="mb-2"
       />
 
-      <ProductGrid 
-        products={ products   }
-      />
+      {
+        products.length === 0
+          ? ( <span>No hay productos disponibles.</span> )
+          : ( <ProductGrid
+            products={ products }
+          />
+          )
+
+      }
 
 
       <Pagination totalPages={ totalPages } />
-      
+
     </>
   );
 }

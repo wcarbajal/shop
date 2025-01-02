@@ -4,17 +4,17 @@ export * from './address/get-user-address';
 export * from './address/set-user-address';
 
 
-export * from './brands/get-paginated-brands'
-export * from './brands/create-update-brand'
-
-
-
-
 export * from './auth/login';
 export * from './auth/logout';
 export * from './auth/register';
 
+export * from './brands/get-paginated-brands'
+export * from './brands/create-update-brand'
+export * from './brands/delete-brand';
+
 export * from './category/get-categories';
+export * from './category/get-category-by-id';
+export * from './category/create-update-category'
 
 export * from './country/get-countries';
 
@@ -38,3 +38,5 @@ export * from './product/delete-product';
 
 export * from './user/change-user-role';
 export * from './user/get-paginater-users';
+
+

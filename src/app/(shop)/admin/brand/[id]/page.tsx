@@ -1,5 +1,5 @@
 
-import { getBrandById } from '@/actions/product/get-brand-by-id';
+import { getBrandById } from '@/actions/brands/get-brand-by-id';
 import { Title } from '@/components';
 import { redirect } from 'next/navigation';
 import { BrandForm } from './ui/BrandForm';
