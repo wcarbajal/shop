@@ -14,7 +14,7 @@ interface Props {
 
 export const PayPalButton = ({ orderId, amount }: Props) => {
 
-  const [{ isPending }] = usePayPalScriptReducer();
+ /*  const [{ isPending }] = usePayPalScriptReducer();
 
   const rountedAmount = (Math.round(amount * 100)) / 100; //123.23
 
@@ -60,15 +60,16 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
 
   }
 
-
+ */
 
 
   return (
     <div className="relative z-0">
-      <PayPalButtons 
+      <span>Aqui paypal</span>
+      {/* <PayPalButtons 
         createOrder={ createOrder }
         onApprove={ onApprove }
-      />
+      /> */}
     </div>
   )
 }
